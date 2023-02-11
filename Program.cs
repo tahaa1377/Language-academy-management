@@ -5,12 +5,113 @@
         static void Main(string[] args)
         {
 
+            List<Teacher>teachers= new List<Teacher>(); 
+            List<Student>students= new List<Student>(); 
+            List<Class>classes  = new List<Class>(); 
+
+
             Console.WriteLine("class days");
             foreach(var iteem in Class.class_days)
             {
                 Console.WriteLine(iteem.ToString());
             }
 
+            while (true)
+            {
+                Console.WriteLine("1- add teacher");
+                Console.WriteLine("2- add student");
+                Console.WriteLine("3- add class");
+                Console.WriteLine("4- calculate salary teacher");
+                Console.WriteLine("5- calculate hoghoogh student");
+                Console.WriteLine("6- show list student");
+                Console.WriteLine("7- show list teacher");
+
+                string n = Console.ReadLine();
+
+                if (n.Equals("1"))
+                {
+                    int code = Convert.ToInt32(Console.ReadLine());
+                    string name = Console.ReadLine();
+                    string family = Console.ReadLine();
+                    int age = Convert.ToInt32(Console.ReadLine());
+                    Teacher teacher1 = new Teacher(code,name,family,age);
+                    
+                    teachers.Add(teacher1);
+                    Console.WriteLine("teacher added");
+                }
+                else if(n.Equals("2"))
+                {
+
+                    int code = Convert.ToInt32(Console.ReadLine());
+                    string name = Console.ReadLine();
+                    string family = Console.ReadLine();
+                    int age = Convert.ToInt32(Console.ReadLine());
+                    Student student1 = new Student(code, name, family, age);
+
+                    students.Add(student1);
+                    Console.WriteLine("student added");
+
+                }
+                else if(n.Equals("3"))
+                {
+
+                    string name = Console.ReadLine();
+                    int number = Convert.ToInt32(Console.ReadLine());
+                    Class c = new Class(name,number);
+
+                    classes.Add(c);
+                    Console.WriteLine("new Class added");
+
+                }
+                else if(n.Equals("4"))
+                {
+                    int code = Convert.ToInt32(Console.ReadLine());
+
+                    foreach(var item in teachers)
+                    {
+                        if(item.TeacherCode == code)
+                        {
+                            Console.WriteLine(item.calculate_salary());
+                        }
+                    }
+
+                }
+                else if(n.Equals("5"))
+                {
+
+                    int code = Convert.ToInt32(Console.ReadLine());
+
+                    foreach (var item in students)
+                    {
+                        if (item.studentId == code)
+                        {
+                            Console.WriteLine(item.student_shahrie());
+                        }
+                    }
+
+                }
+                else if(n.Equals("6"))
+                {
+
+                    foreach (var item in students)
+                    {
+                       
+                        Console.WriteLine(item);
+                        
+                    }
+
+                }
+                else if(n.Equals("7"))
+                {
+                    foreach (var item in teachers)
+                    {
+
+                        Console.WriteLine(item);
+
+                    }
+                }
+            }
+/*
             Teacher teacher1 = new Teacher(123, "ali", "alavi", 42);
             Teacher teacher2 = new Teacher(456, "vahid", "yadegarian", 34);
             Teacher teacher3 = new Teacher(468, "jamal", "ahmadi", 65);
@@ -62,7 +163,7 @@
             HesabDari.calculate_salary_teacher(teacher2);
             HesabDari.calculate_salary_teacher(teacher3);
             HesabDari.calculate_salary_teacher(teacher4);
-            HesabDari.calculate_salary_teacher(teacher5);
+            HesabDari.calculate_salary_teacher(teacher5);*/
         }
     }
 }
